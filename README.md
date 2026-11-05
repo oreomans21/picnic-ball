@@ -1,5 +1,7 @@
 # Picnic Ball
 
+**[Play the live game](https://picnic-ball.onrender.com)** · **[Public source repository](https://github.com/oreomans21/picnic-ball)**
+
 A mouse-only, online two-player food baseball game. Unofficial fan project inspired by [Google’s Fourth of July 2019 Doodle](https://doodles.google/doodle/fourth-of-july-2019/). Not affiliated with or endorsed by Google.
 
 The final direction is a fullscreen cartoon game: a real Three.js 3D field, illustrated articulated 2D characters, a Phaser input/HUD client, and an authoritative Node.js WebSocket server. The earlier beige interface and flat SVG fields are superseded.
@@ -55,7 +57,25 @@ Use the included **[render.yaml](render.yaml)**. Do not create a separate static
 
 Alternatively create a Web Service manually with the same settings and choose **Free** explicitly. If this folder is inside a larger repository, set Root Directory to its repository-relative folder.
 
-**Live Render deployment has not been performed in this workspace.** The Render account connection and a repository accessible to Render are still required. No deployment URL is claimed.
+**Deployed and verified on Render Free on November 5, 2026:** [picnic-ball.onrender.com](https://picnic-ball.onrender.com). One Node web service in Frankfurt serves the frontend, local fonts/art, HTTP endpoints, and secure WebSockets. There are no databases or other Render resources. The source repository is public with the owner's approval.
+
+The existing service is `srv-dbmbgrdbedkc73bpci6g`; use the live link rather than creating another service. The steps above describe reproducing the deployment in another account.
+
+CLI deployment uses the same settings:
+
+```sh
+render login
+render workspace set
+render services create --name picnic-ball --type web_service \
+  --repo https://github.com/oreomans21/picnic-ball --branch main \
+  --runtime node --plan free --num-instances 1 --region frankfurt \
+  --build-command "npm ci --include=dev && npm run build" \
+  --start-command "npm start" --health-check-path /health \
+  --env-var NODE_ENV=production --env-var NODE_VERSION=22.22.0 \
+  --output json --confirm
+```
+
+For the existing service, future code pushes to `main` auto-deploy. Documentation-only commits can use `[skip render]` to preserve active in-memory matches. To deploy manually: `render deploys create srv-dbmbgrdbedkc73bpci6g --wait --output json`.
 
 ### Environment
 
@@ -121,8 +141,7 @@ Observed checks:
 - Edge 156.0.4314.58: practice rendering smoke check passed. Full-match coverage was Chrome only.
 - Firefox 157 test binary could not launch (`spawn UNKNOWN`); Firefox compatibility remains unverified.
 - A 1920×1080 headless Chrome run on an Intel Core Ultra 5 125U / Intel integrated Graphics, using ANGLE Direct3D11, averaged **59.82 reported render FPS over the last 600 samples** without video recording. Concurrent video/browser checks were around 36 FPS. This is a short local result, not a guarantee for every live-play scene or Render client.
-- No connection between separate physical computers was available. No public Render deployment/load test was performed. A 75 ms delayed input path was tested; broad real-world latency/jitter fairness and browser RTT-warning behavior still need wider verification.
+- No connection between separate physical computers was available. The public Render service passed a two-browser HTTPS/WSS smoke test, including room creation/joining, ready states, pitching, contact, a manual run command, a defensive throw, pause and a real 60-second forfeit, without page errors. Observed RTT was approximately 85 ms. This was not a two-match load test. A 75 ms delayed input path was also tested locally; broad real-world latency/jitter fairness and browser RTT-warning behavior still need wider verification.
 - Sprites are authored vector rigs rendered onto fixed upright planes, not volumetric characters. Rear/side drawings share the rig, and the camera deliberately maintains one azimuth to avoid rotating-cardboard behavior. The camera zooms rather than orbiting.
 
-See `evidence/browser-report.json`, `evidence/performance.json`, and `evidence/full-match-report.json`. Do not interpret unperformed checks as passes.
-
+See `evidence/browser-report.json`, `evidence/performance.json`, `evidence/full-match-report.json`, and `evidence/render-verification.json`. Do not interpret unperformed checks as passes.
