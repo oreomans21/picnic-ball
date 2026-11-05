@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#f5edda" />
+    <title>Picnic Ball — A little friendly competition</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta
+      name="description"
+      content="A mouse-only two-player baseball picnic. Practice, invite a friend, and play three innings. Unofficial fan project."
+    />
+  </head>
+  <body>
+    <header>
+      <a class="brand" href="/" aria-label="Picnic Ball home"
+        ><span class="brand-ball" aria-hidden="true"></span
+        ><span
+          >picnic<span class="brand-second">ball</span
+          ><small>A LITTLE FRIENDLY COMPETITION</small></span
+        ></a
+      >
+      <nav>
+        <button id="practice-nav">Practice field</button
+        ><button id="gallery-nav">Animation studio</button
+        ><button id="help-nav" aria-label="Game rules">
+          How to play <span class="question">?</span>
+        </button>
+      </nav>
+    </header>
+    <main>
+      <div id="game-shell">
+        <div id="game" aria-label="Interactive baseball field"></div>
+        <div id="scoreboard" hidden></div>
+        <div id="role-label" hidden></div>
+        <div id="notice" role="status" aria-live="polite"></div>
+        <section id="lobby" class="paper">
+          <span class="eyebrow">THE BACKYARD BALL CLUB</span>
+          <h1>Small snacks.<br /><em>Big swings.</em></h1>
+          <p>
+            Bring a friend to the diamond.<br />Three innings. Two teams. All
+            picnic.
+          </p>
+          <button id="practice" class="primary">
+            Take a practice swing <span>↗</span>
+          </button>
+          <div class="divider"><span>OR PLAY WITH A FRIEND</span></div>
+          <label for="name">Your ballpark name</label
+          ><input
+            id="name"
+            maxlength="20"
+            value="Snack fan"
+            autocomplete="nickname"
+          />
+          <div class="lobby-actions">
+            <button id="create">Create a room</button
+            ><button id="join-toggle">Join a room</button>
+          </div>
+          <div id="join-row" hidden>
+            <label for="code">Six-character room code</label>
+            <div class="input-row">
+              <input id="code" maxlength="6" placeholder="ABC123" /><button
+                id="join"
+              >
+                Join
+              </button>
+            </div>
+          </div>
+          <details id="server-settings">
+            <summary>Multiplayer server</summary>
+            <label for="endpoint">Secure WebSocket address</label
+            ><input id="endpoint" placeholder="wss://your-server.example.com" />
+            <p class="fine">
+              Uses the server on this site automatically. Override only for
+              local development.
+            </p>
+            <button id="save-server">Save address</button>
+          </details>
+          <p id="lobby-error" class="error" role="alert"></p>
+          <div id="room-info" hidden></div>
+        </section>
+        <div id="lobby-stamp">
+          <span>EST. 2019 · REIMAGINED FOR TWO</span
+          ><strong>Everyone gets<br />a turn at bat.</strong
+          ><span>NO KEYS TO MEMORIZE.</span>
+        </div>
+        <section id="controls" hidden></section>
+        <aside id="tutorial" hidden></aside>
+        <div id="meter" hidden>
+          <strong>Release near the green!</strong>
+          <div class="meter-track"><i></i><b></b></div>
+          <small>Slower & steady <span>Faster & riskier</span></small>
+        </div>
+        <div id="overlay" hidden></div>
+      </div>
+      <footer>
+        <span
+          ><i class="status-dot"></i
+          ><span id="connection">The practice field is open</span></span
+        ><span
+          >Unofficial fan project · Inspired by
+          <a
+            href="https://doodles.google/doodle/fourth-of-july-2019/"
+            target="_blank"
+            rel="noreferrer"
+            >Google’s 2019 baseball Doodle</a
+          ></span
+        ><button id="sound" aria-pressed="false">Sound off</button>
+      </footer>
+    </main>
+    <dialog id="help">
+      <button class="close" aria-label="Close rules">×</button
+      ><span class="eyebrow">A QUICK TRIP AROUND THE BASES</span>
+      <h2>Aim. Swing. Bring it home.</h2>
+      <div class="rules-grid">
+        <section>
+          <h3>When you bat</h3>
+          <p>
+            Aim at the ball and click once to swing. After a hit, click first
+            base to run. Select any runner, then choose a base. They stop when
+            they arrive.
+          </p>
+        </section>
+        <section>
+          <h3>When you defend</h3>
+          <p>
+            Choose a pitch. Aim inside the box, hold the mouse, then release
+            near the green. Fielders catch automatically. Click a base to throw.
+          </p>
+        </section>
+        <section>
+          <h3>The score</h3>
+          <p>
+            Three strikes end a batter’s turn. Four balls award first base.
+            Three outs switch sides. Play three innings, then extra innings if
+            tied.
+          </p>
+        </section>
+        <section>
+          <h3>A few friendly rules</h3>
+          <p>
+            A force out happens when a runner must reach the next base. On a
+            caught fly, return to the original base before advancing: that’s
+            tagging up.
+          </p>
+          <p>
+            After 8 seconds without progress, a 5-second warning appears.
+            Runners still between bases are then out. No steals or bunts.
+          </p>
+        </section>
+      </div>
+      <button class="primary" id="replay-tutorial">
+        Try it on the practice field
+      </button>
+    </dialog>
+    <script type="module" src="/client/main.ts"></script>
+  </body>
+</html>

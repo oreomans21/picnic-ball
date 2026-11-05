@@ -1,0 +1,8 @@
+node_modules/
+dist/
+build/
+evidence/
+.env
+.env.local
+test-results/
+.sites-local/

@@ -1,0 +1,334 @@
+{
+  "format": "articulated-vector-and-transparent-preview-atlas",
+  "source": "client/art.ts",
+  "worldSource": "client/world.ts",
+  "frame": {
+    "width": 128,
+    "height": 160,
+    "anchor": {
+      "x": 64,
+      "y": 150
+    }
+  },
+  "runtimeRasterization": "512×640 for batter/pitcher; 256×320 for fielders. Runtime uses the original vector rig, rather than enlarging preview frames. Upright fixed planes; no orbit-facing billboards.",
+  "views": [
+    "front",
+    "rear",
+    "side"
+  ],
+  "variations": "Nine cap/number combinations via variation % 9",
+  "clips": {
+    "idle": {
+      "duration": 2.8,
+      "loop": true,
+      "events": {}
+    },
+    "ready": {
+      "duration": 1.8,
+      "loop": true,
+      "events": {}
+    },
+    "pitch": {
+      "duration": 1.2,
+      "loop": false,
+      "events": {
+        "release": 0.72
+      }
+    },
+    "swing": {
+      "duration": 0.66,
+      "loop": false,
+      "events": {
+        "contact": 0.18
+      }
+    },
+    "run": {
+      "duration": 0.52,
+      "loop": true,
+      "events": {
+        "leftFoot": 0,
+        "rightFoot": 0.26
+      }
+    },
+    "scoop": {
+      "duration": 0.8,
+      "loop": false,
+      "events": {
+        "secure": 0.42
+      }
+    },
+    "catch": {
+      "duration": 0.72,
+      "loop": false,
+      "events": {
+        "catch": 0.2
+      }
+    },
+    "throw": {
+      "duration": 0.8,
+      "loop": false,
+      "events": {
+        "release": 0.38
+      }
+    },
+    "tag": {
+      "duration": 0.55,
+      "loop": false,
+      "events": {
+        "contact": 0.2
+      }
+    },
+    "celebrate": {
+      "duration": 1.4,
+      "loop": true,
+      "events": {}
+    },
+    "strikeout": {
+      "duration": 1.6,
+      "loop": false,
+      "events": {}
+    }
+  },
+  "atlases": [
+    {
+      "food": "hotdog",
+      "view": "front",
+      "path": "art/sheets/hotdog-front.png",
+      "columns": 12,
+      "rows": [
+        "idle",
+        "ready",
+        "pitch",
+        "swing",
+        "run",
+        "scoop",
+        "catch",
+        "throw",
+        "tag",
+        "celebrate",
+        "strikeout"
+      ],
+      "frameSamples": "0..duration inclusive; runtime interpolates authored pose keys"
+    },
+    {
+      "food": "hotdog",
+      "view": "rear",
+      "path": "art/sheets/hotdog-rear.png",
+      "columns": 12,
+      "rows": [
+        "idle",
+        "ready",
+        "pitch",
+        "swing",
+        "run",
+        "scoop",
+        "catch",
+        "throw",
+        "tag",
+        "celebrate",
+        "strikeout"
+      ],
+      "frameSamples": "0..duration inclusive; runtime interpolates authored pose keys"
+    },
+    {
+      "food": "hotdog",
+      "view": "side",
+      "path": "art/sheets/hotdog-side.png",
+      "columns": 12,
+      "rows": [
+        "idle",
+        "ready",
+        "pitch",
+        "swing",
+        "run",
+        "scoop",
+        "catch",
+        "throw",
+        "tag",
+        "celebrate",
+        "strikeout"
+      ],
+      "frameSamples": "0..duration inclusive; runtime interpolates authored pose keys"
+    },
+    {
+      "food": "peanut",
+      "view": "front",
+      "path": "art/sheets/peanut-front.png",
+      "columns": 12,
+      "rows": [
+        "idle",
+        "ready",
+        "pitch",
+        "swing",
+        "run",
+        "scoop",
+        "catch",
+        "throw",
+        "tag",
+        "celebrate",
+        "strikeout"
+      ],
+      "frameSamples": "0..duration inclusive; runtime interpolates authored pose keys"
+    },
+    {
+      "food": "peanut",
+      "view": "rear",
+      "path": "art/sheets/peanut-rear.png",
+      "columns": 12,
+      "rows": [
+        "idle",
+        "ready",
+        "pitch",
+        "swing",
+        "run",
+        "scoop",
+        "catch",
+        "throw",
+        "tag",
+        "celebrate",
+        "strikeout"
+      ],
+      "frameSamples": "0..duration inclusive; runtime interpolates authored pose keys"
+    },
+    {
+      "food": "peanut",
+      "view": "side",
+      "path": "art/sheets/peanut-side.png",
+      "columns": 12,
+      "rows": [
+        "idle",
+        "ready",
+        "pitch",
+        "swing",
+        "run",
+        "scoop",
+        "catch",
+        "throw",
+        "tag",
+        "celebrate",
+        "strikeout"
+      ],
+      "frameSamples": "0..duration inclusive; runtime interpolates authored pose keys"
+    },
+    {
+      "food": "popcorn",
+      "view": "front",
+      "path": "art/sheets/popcorn-front.png",
+      "columns": 12,
+      "rows": [
+        "idle",
+        "ready",
+        "pitch",
+        "swing",
+        "run",
+        "scoop",
+        "catch",
+        "throw",
+        "tag",
+        "celebrate",
+        "strikeout"
+      ],
+      "frameSamples": "0..duration inclusive; runtime interpolates authored pose keys"
+    },
+    {
+      "food": "popcorn",
+      "view": "rear",
+      "path": "art/sheets/popcorn-rear.png",
+      "columns": 12,
+      "rows": [
+        "idle",
+        "ready",
+        "pitch",
+        "swing",
+        "run",
+        "scoop",
+        "catch",
+        "throw",
+        "tag",
+        "celebrate",
+        "strikeout"
+      ],
+      "frameSamples": "0..duration inclusive; runtime interpolates authored pose keys"
+    },
+    {
+      "food": "popcorn",
+      "view": "side",
+      "path": "art/sheets/popcorn-side.png",
+      "columns": 12,
+      "rows": [
+        "idle",
+        "ready",
+        "pitch",
+        "swing",
+        "run",
+        "scoop",
+        "catch",
+        "throw",
+        "tag",
+        "celebrate",
+        "strikeout"
+      ],
+      "frameSamples": "0..duration inclusive; runtime interpolates authored pose keys"
+    },
+    {
+      "food": "watermelon",
+      "view": "front",
+      "path": "art/sheets/watermelon-front.png",
+      "columns": 12,
+      "rows": [
+        "idle",
+        "ready",
+        "pitch",
+        "swing",
+        "run",
+        "scoop",
+        "catch",
+        "throw",
+        "tag",
+        "celebrate",
+        "strikeout"
+      ],
+      "frameSamples": "0..duration inclusive; runtime interpolates authored pose keys"
+    },
+    {
+      "food": "watermelon",
+      "view": "rear",
+      "path": "art/sheets/watermelon-rear.png",
+      "columns": 12,
+      "rows": [
+        "idle",
+        "ready",
+        "pitch",
+        "swing",
+        "run",
+        "scoop",
+        "catch",
+        "throw",
+        "tag",
+        "celebrate",
+        "strikeout"
+      ],
+      "frameSamples": "0..duration inclusive; runtime interpolates authored pose keys"
+    },
+    {
+      "food": "watermelon",
+      "view": "side",
+      "path": "art/sheets/watermelon-side.png",
+      "columns": 12,
+      "rows": [
+        "idle",
+        "ready",
+        "pitch",
+        "swing",
+        "run",
+        "scoop",
+        "catch",
+        "throw",
+        "tag",
+        "celebrate",
+        "strikeout"
+      ],
+      "frameSamples": "0..duration inclusive; runtime interpolates authored pose keys"
+    }
+  ]
+}
